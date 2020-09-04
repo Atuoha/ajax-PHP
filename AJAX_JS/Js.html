@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <title>Document</title>
+</head>
+<body>
+   
+
+<!--  The snippet is using RAW JAVASCRIPT FOR AJAX -->
+
+    <script>
+        function init(){
+
+            const xhr = new XMLHttpRequest();
+
+        //    xhr.open("GET","js.php",true); // Get Request for pulling out
+
+            xhr.open("POST","js.php",true) // For posting and updating
+            xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")  // only for post and put(update)
+
+
+
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState == 4 && xhr.status == 200){
+                    const docs = xhr.responseText;
+                    document.querySelector('.con').innerHTML = docs;
+
+                }
+            }
+
+            xhr.send("Email=atutechs@gmail.com&&Password=busylearningcoding247");
+        }
+    </script>
+
+    <div class="container mt-5">
+        <button class="btn btn-primary" onclick="init()">Click</button>
+
+        <div class="col-md-5 con"></div>
+    </div>
+</body>
+</html>
